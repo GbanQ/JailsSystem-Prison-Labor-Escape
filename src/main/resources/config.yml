@@ -1,0 +1,355 @@
+# ==================================================
+# Jails Configuration
+# ==================================================
+
+# Язык плагина (ru, en)
+language: en
+
+enable-pvo: false
+enable-escapes: true
+enable-work-system: true
+enable-lockpicking: true
+
+# ================ ОБЩИЕ НАСТРОЙКИ =================
+general:
+  afk-timeout: 60
+  afk-time-multiplier: 3
+  escape-time-limit: 900
+  escape-fail-multiplier: 2.0
+
+# ================ СИСТЕМА ПВО ================
+pvo:
+  area-corner1:
+    world: world
+    x: 1258
+    y: 0
+    z: -1109
+  area-corner2:
+    world: world
+    x: 1373
+    y: 256
+    z: -976
+  warning-time: 1
+  missile-start-speed: 0.3
+  missile-speed-increment: 0.5
+  missile-speed-increment-interval: 50
+  missile-max-speed: 3.0
+  explosion-power: 4.0
+
+# ================ ПОБЕГ ЧЕРЕЗ ТАБЛИЧКУ ============
+escape-ship:
+  effect-duration: 12.5
+  teleport-delay: 10
+  final-message-delay: 1
+  destination:
+    world: world
+    x: -1023
+    y: 66
+    z: -3180
+
+# ================ РАБОТЫ (кирпичи) ================
+work-brick:
+  time-reduction: 20
+  lockpick-chance: 5.0
+  slowness-amplifier: 2
+  slowness-duration: 4
+  slowness-interval: 2
+
+# ================ РАБОТЫ (прачечная) ==============
+work-laundry:
+  time-reduction: 20
+  guard-armor-chance: 10.0
+  wash-duration: 10
+
+# ================ РАБОТЫ (кухня) ==================
+work-kitchen:
+  time-reduction: 10
+  recipes:
+    cake:
+      name: "Торт"
+      ingredients:
+        - MILK_BUCKET
+        - MILK_BUCKET
+        - MILK_BUCKET
+        - SUGAR
+        - SUGAR
+        - WHEAT
+        - WHEAT
+        - WHEAT
+        - EGG
+      result: CAKE
+      time: [15, 30]
+    cooked_fish:
+      name: "Печеная рыба"
+      ingredients: [COD]
+      result: COOKED_COD
+      time: [12, 16]
+    pumpkin_pie:
+      name: "Тыквенный пирог"
+      ingredients: [PUMPKIN, SUGAR, EGG]
+      result: PUMPKIN_PIE
+      time: [8, 12]
+    baked_potato:
+      name: "Печеный картофель"
+      ingredients: [POTATO]
+      result: BAKED_POTATO
+      time: [12, 16]
+    cooked_porkchop:
+      name: "Жареная свинина"
+      ingredients: [PORKCHOP]
+      result: COOKED_PORKCHOP
+      time: [12, 15]
+    cooked_beef:
+      name: "Жареная говядина"
+      ingredients: [BEEF]
+      result: COOKED_BEEF
+      time: [12, 15]
+    rabbit_stew:
+      name: "Кроличий рагу"
+      ingredients: [RABBIT, BAKED_POTATO, CARROT, BOWL, RED_MUSHROOM]
+      result: RABBIT_STEW
+      time: [15, 30]
+    mushroom_stew:
+      name: "Тушеные грибы"
+      ingredients: [RED_MUSHROOM, BROWN_MUSHROOM, BOWL]
+      result: MUSHROOM_STEW
+      time: [8, 12]
+    beetroot_soup:
+      name: "Суп из свеклы"
+      ingredients: [BEETROOT, BEETROOT, BEETROOT, BEETROOT, BEETROOT, BEETROOT, BOWL]
+      result: BEETROOT_SOUP
+      time: [10, 17]
+    bread:
+      name: "Хлеб"
+      ingredients: [WHEAT, WHEAT, WHEAT]
+      result: BREAD
+      time: [8, 12]
+
+# ================ НАГРАДА ЗА ПОИМКУ ===============
+capture-reward:
+  divider: 300
+
+# ================ ВЗЛОМ ЗАМКОВ ====================
+lockpick:
+  cooldown: 10
+  attempt-delay: 3
+  door-open-time: 30
+  durability-loss: 34.0
+  minigame:
+    rounds: 6
+    base-speed: 2.2
+    zone-width-min: 8
+    zone-width-max: 13
+    start-delay: 40
+    speed-multiplier: 1.5
+
+# ================ СИСТЕМА ПОБЕГА =================
+escape:
+  require-passport: true
+  require-full-guard-armor: true
+  messages:
+    escape-start: "&aВы сбежали из тюрьмы! У вас есть &e{time} минут&a, чтобы добраться до места побега и активировать его!"
+    passport-missing: "&cУ вас нет билета на паром! Купите его у торговца на чёрном рынке за {swcoin}."
+    armor-missing: "&cДля побега вам нужен полный комплект брони надзирателя!"
+    escape-area-found: "&aВы нашли место побега! Используйте &6{interact-item}&a, чтобы сбежать."
+    escape-success: "&aПоздравляем! Вы успешно сбежали из тюрьмы!"
+    escape-fail: "&cВы не успели сбежать и вернулись в тюрьму. Срок увеличен в {multiplier} раз!"
+    escape-caught: "&cВас поймали при попытке побега! Срок увеличен в {multiplier} раз!"
+    broadcast-escape: "&7[Тюрьма] &eИгрок {player} сбежал из тюрьмы!"
+    broadcast-caught: "&7[Тюрьма] &cИгрок {player} был пойман при попытке побега!"
+    broadcast-location: "&7[Тюрьма] &eСбежавший заключённый {player} был замечен на X: {x}, Y: {y}, Z: {z}."
+  
+  escape-zones:
+    dock:
+      enabled: true
+      name: "&bПричал"
+      world: world
+      corner1:
+        x: -1023
+        y: 66
+        z: -3180
+      corner2:
+        x: -1000
+        y: 70
+        z: -3150
+      interact-item:
+        material: OAK_SIGN
+        name: "&6Уплыть"
+        lore:
+          - "&7Нажмите ПКМ, чтобы сбежать"
+      on-success:
+        teleport:
+          enabled: true
+          world: world
+          x: 0
+          y: 64
+          z: 0
+        player-commands: []
+        console-commands:
+          - "broadcast &eИгрок {player} сбежал через причал!"
+
+  location-broadcast:
+    enabled: true
+    interval: 60
+
+# ================ ЧЁРНЫЙ РЫНОК =================
+blackmarket:
+  enabled: true
+  zone:
+    world: world
+    corner1:
+      x: 306
+      y: 60
+      z: 93
+    corner2:
+      x: 329
+      y: 90
+      z: 69
+
+  trader:
+    name: "&6&lТорговец чёрного рынка"
+    spawn-item:
+      material: VILLAGER_SPAWN_EGG
+      name: "&6Яйцо призыва торговца"
+      lore:
+        - "&7Нажмите ПКМ по блоку,"
+        - "&7чтобы призвать торговца"
+    offers:
+      ticket:
+        enabled: true
+        price: 20
+        item:
+          material: PAPER
+          name: "&6Билет на паром"
+          lore:
+            - "&7Одноразовый билет для переправы"
+            - "&7через море. Используйте на месте побега."
+
+  map-settings:
+    name: "&6Карта чёрного рынка"
+    lore:
+      - "&7Используйте эту карту, чтобы найти вход на чёрный рынок."
+      - "&eТам вы сможете приобрести билет на паром."
+    marker-type: "red_x"
+    marker-rotation: 180
+
+  messages:
+    not-in-market: "&cВы должны находиться на чёрном рынке, чтобы купить билет!"
+    not-enough-money: "&cУ вас недостаточно {swcoin} для покупки билета!"
+    purchase-success: "&aВы успешно купили билет на паром за {price} {swcoin}!"
+    already-have: "&cУ вас уже есть билет!"
+
+# ================ ПРЕДМЕТЫ =================
+items:
+  lockpick:
+    material: WOODEN_HOE
+    name: "&6Деревянная отмычка"
+    lore:
+      - "&7может взламывать железные двери"
+  
+  guard-armor:
+    helmet:
+      material: LEATHER_HELMET 
+      name: "&7Шлем надзирателя"
+      color: "0,0,70"
+    chestplate:
+      material: LEATHER_CHESTPLATE
+      name: "&7Нагрудник надзирателя"
+      color: "0,0,70"
+    leggings:
+      material: LEATHER_LEGGINGS
+      name: "&7Поножи надзирателя"
+      color: "0,0,70"
+    boots:
+      material: LEATHER_BOOTS
+      name: "&7Ботинки надзирателя"
+      color: "71,74,81"
+
+# ================ SWcoin ====================
+swcoin:
+  material: GOLD_NUGGET
+  name: "&6SWcoin"
+  lore: "&dТюремная валюта"
+  
+  rewards:
+    brick:
+      enabled: true
+      work-count: 5
+    laundry:
+      enabled: true
+      work-count: 8
+    kitchen:
+      enabled: true
+      work-count: 10
+
+# ================ БИБЛИОТЕКА =================
+library:
+  enabled: true
+  time-reduction: 15
+  fragment-chance: 0.1
+  glow-enabled: true
+  particle-type: END_ROD
+
+  categories:
+    history:
+      name: "История"
+      book-names:
+        - "&6История Древнего Мира"
+        - "&eВойна и Мир"
+        - "&7Хроники средневековья"
+        - "&aЗабытые цивилизации"
+        - "&3Великие империи"
+        - "&dТайны прошлого"
+    law:
+      name: "Право"
+      book-names:
+        - "&2Конституция"
+        - "&8Уголовный кодекс"
+        - "&5Судебные прецеденты"
+        - "&cПрава заключённых"
+        - "&6Административное право"
+        - "&bМеждународное право"
+    medicine:
+      name: "Медицина"
+      book-names:
+        - "&dАнатомия человека"
+        - "&bПервая помощь"
+        - "&3Фармакология"
+        - "&fХирургические методы"
+        - "&aТравматология"
+        - "&eНеврология"
+    literature:
+      name: "Литература"
+      book-names:
+        - "&5Мастер и Маргарита"
+        - "&eВойна и мир"
+        - "&6Преступление и наказание"
+        - "&aЕвгений Онегин"
+        - "&bМёртвые души"
+        - "&3Герой нашего времени"
+    geography:
+      name: "География"
+      book-names:
+        - "&2Материки и океаны"
+        - "&eСтраны мира"
+        - "&bВеликие путешественники"
+        - "&6Картография"
+        - "&aКлимат и погода"
+        - "&3Природные зоны"
+    science:
+      name: "Наука"
+      book-names:
+        - "&dФизика для начинающих"
+        - "&aХимия элементов"
+        - "&eБиология человека"
+        - "&6Астрономия"
+        - "&3Математика"
+        - "&fПрограммирование"
+
+  map-recipe:
+    fragments-required: 9
+
+# ================ СООБЩЕНИЯ ОБ AFK ================
+afk-messages:
+  on: "&eВы находитесь в состоянии AFK. Ваше время заключения идет медленнее."
+  off: "&eВы вышли из состояния AFK. Время заключения теперь идет в обычном режиме."

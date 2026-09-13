@@ -1,0 +1,110 @@
+name: Jails
+version: '${project.version}'
+main: org.gbq.jails.Jails
+api-version: '1.21'
+authors: [G_Ban_Q]
+commands:
+  jails:
+    description: Главное меню тюрьмы
+    aliases: [jinfo]
+  jails workinfo:
+    description: Информация о работах
+    aliases: [jwork, works]
+  jails escapeinfo:
+    description: Информация о побеге
+    aliases: [jescape, escape]
+  jails rules:
+    description: Правила тюрьмы
+    aliases: [jrules, rules]
+  cell:
+    description: Управление тюремными камерами
+    usage: |
+      /cell create <name> - создать камеру
+      /cell delete <name> - удалить камеру
+      /cell rename <old> <new> - переименовать камеру
+  jail:
+    description: Сажает игрока в тюрьму
+    usage: /jail <player> <time> <cell> <reason>
+  unjail:
+    description: Освобождает игрока из тюрьмы
+    usage: /unjail <player>
+  jtime:
+    description: Управление временем заключения
+    usage: |
+      /jtime - проверить своё время
+      /jtime <игрок> - время другого игрока (admin)
+      /jtime add <игрок> <секунды> - добавить время (admin)
+      /jtime remove <игрок> <секунды> - убавить время (admin)
+      /jtime set <игрок> <секунды> - установить время (admin)
+    aliases: [jt, jailtime]
+  jailstatus:
+    description: Выводит список всех игроков сидящих в тюрьме и информацию о них
+  givepick:
+    description: Выдает отмычку.
+    usage: /givepick
+  jailtools:
+    description: Открыть меню инструментов тюрьмы (рабочие блоки, призыв торговца)
+    usage: /jailtools [give <тип>]
+    permission: jails.workblocks
+  jailhistory:
+    description: Показать историю наказаний игрока
+    usage: /jailhistory [игрок] [страница]
+  jailboard:
+    description: Управление табло заключённых
+    usage: /jailboard [create|confirm|cancel|clear]
+    permission: jails.admin
+  buypassport:
+    description: Купить паспорт на чёрном рынке
+    usage: /buypassport
+    aliases: [buyps, passport]
+  givearmour:
+    description: Выдать броню надзирателя
+    usage: /givearmour [игрок]
+    permission: jails.admin
+  givetable:
+    description: Выдать предмет побега
+    usage: /givetable [игрок]
+    permission: jails.admin
+  givemarketmap:
+    description: Выдать карту чёрного рынка
+    usage: /givemarketmap [игрок]
+    permission: jails.admin
+permissions:
+  jails.jail:
+    description: "Позволяет использовать команду /jail"
+    default: false
+  jails.unjail:
+    description: "Позволяет использовать команду /unjail"
+    default: false
+  jails.workblocks:
+    description: Доступ к команде workblocks
+    default: op
+  jails.history.self:
+    description: Просмотр своей истории
+    default: true
+  jails.history.others:
+    description: Просмотр истории других игроков
+    default: op
+  jails.history:
+    description: Просмотр истории (своей и чужой)
+    default: op
+    children:
+      jails.history.self: true
+      jails.history.others: true
+  jails.admin:
+    description: Управление табло и админ-команды
+    default: op
+  jails.jtime.self:
+    description: Просмотр своего времени
+    default: true
+  jails.jtime.others:
+    description: Просмотр времени других
+    default: op
+  jails.jtime.modify:
+    description: Изменение времени
+    default: op
+  jails.admin:
+    default: op
+    children:
+      jails.jtime.others: true
+      jails.jtime.modify: true

@@ -1,0 +1,26 @@
+@"
+# --- Maven / build ---
+target/
+*.class
+
+# --- IDE ---
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+
+# --- Локальные инструменты ---
+.kombai/
+apache-maven-3.9.9/
+maven.zip
+
+# --- Собранные артефакты ---
+*.jar
+!/.mvn/wrapper/maven-wrapper.jar
+
+# --- OS / logs ---
+.DS_Store
+Thumbs.db
+*.log
+"@ | Out-File -Encoding utf8 .gitignore
