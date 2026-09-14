@@ -2,7 +2,7 @@
 
 [![Paper 1.21+](https://img.shields.io/badge/Paper-1.21%2B-blue?style=flat-square)](https://papermc.io/)
 [![Java 17+](https://img.shields.io/badge/Java-17%2B-orange?style=flat-square)](https://adoptium.net/)
-[![Modrinth](https://img.shields.io/modrinth/dt/gVO8kFlD?style=flat-square&logo=modrinth&label=downloads)]([https://modrinth.com/plugin/jailssystem](https://modrinth.com/plugin/jailssystem-prison-labor-escape))
+[![Modrinth](https://img.shields.io/modrinth/dt/gVO8kFlD?style=flat-square&logo=modrinth&label=downloads)](https://modrinth.com/plugin/jailssystem-prison-labor-escape)
 
 A complete prison system for Minecraft **Paper 1.21** servers.
 Serve your sentence, work to reduce it, and plan daring escapes.
