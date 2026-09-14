@@ -7,7 +7,7 @@
 A complete prison system for Minecraft **Paper 1.21** servers.
 Serve your sentence, work to reduce it, and plan daring escapes.
 
-[**Download**](../../releases) · [**Report Bug**](../../issues) · [**Request Feature**](../../issues)
+[**Download**](../../releases) · [**Report Bug**](../../issues) 
 
 ---
 
