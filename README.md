@@ -139,16 +139,4 @@ To switch to Russian:
 
 If the translation file is not created automatically, do a full server restart with `language: ru` already set. The plugin will generate `lang_en.yml` and `lang_ru.yml`, which you can edit freely to customize or complete the translation.
 
----
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-<div align="center">
-
-Made with care for the Minecraft community.
-
-</div>
